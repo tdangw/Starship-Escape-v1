@@ -1,0 +1,20 @@
+{
+  "name": "Starship Escape",
+  "short_name": "Starship",
+  "description": "Puzzle logistics game built for web and mobile play.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "categories": ["games", "puzzle", "strategy"],
+  "icons": [
+    {
+      "src": "./icons/starship-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
