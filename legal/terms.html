@@ -4,421 +4,327 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms of Service - Starship Escape</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #070a13;
-      --bg-card: rgba(15, 23, 42, 0.65);
-      --border-color: rgba(99, 102, 241, 0.15);
-      --border-glow: rgba(34, 211, 238, 0.3);
-      --primary: #6366f1;
-      --primary-light: #818cf8;
-      --accent: #22d3ee;
-      --text-main: #f1f5f9;
-      --text-muted: #94a3b8;
+      color-scheme: dark;
+      --bg: #070a13;
+      --panel: #101627;
+      --line: #27324d;
+      --text: #f3f7ff;
+      --muted: #9ba9c4;
+      --accent: #7dd3fc;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; }
     body {
-      background-color: var(--bg-dark);
-      background-image: 
-        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(34, 211, 238, 0.08) 0%, transparent 40%);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      line-height: 1.7;
+      margin: 0;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(125, 211, 252, 0.08), transparent 32rem),
+        radial-gradient(circle at 85% 0%, rgba(129, 140, 248, 0.1), transparent 34rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      padding: 32px 16px;
     }
-
-    header {
-      width: 100%;
-      max-width: 800px;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .brand {
-      font-family: 'Outfit', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #f8fafc 30%, #818cf8 70%, #22d3ee 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 8px;
-      display: inline-block;
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 500;
-    }
-
-    .lang-switcher {
-      display: flex;
-      background: rgba(30, 41, 59, 0.7);
-      border: 1px solid var(--border-color);
-      border-radius: 50px;
-      padding: 4px;
-      margin: 24px auto 0 auto;
-      max-width: fit-content;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .lang-btn {
-      border: none;
-      background: none;
-      color: var(--text-muted);
-      font-family: 'Outfit', sans-serif;
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 8px 24px;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .lang-btn.active {
-      background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%);
-      color: #ffffff;
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-    }
-
     main {
-      width: 100%;
-      max-width: 800px;
-    }
-
-    .content-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 24px;
-      padding: 40px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       position: relative;
-      overflow: hidden;
-      transition: border-color 0.5s ease;
+      width: min(900px, 100%);
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(16, 22, 39, 0.86);
+      padding: clamp(24px, 5vw, 48px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
     }
-
-    .content-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
-    }
-
-    .lang-section {
-      display: none;
-      animation: fadeIn 0.4s ease-out forwards;
-    }
-
-    .lang-section.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
+    h1, h2 { line-height: 1.2; }
     h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #ffffff;
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: 0.02em;
     }
-
-    .last-updated {
-      color: var(--accent);
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .last-updated::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background-color: var(--accent);
-      box-shadow: 0 0 8px var(--accent);
-    }
-
     h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-top: 32px;
-      margin-bottom: 12px;
-      color: #ffffff;
+      margin: 32px 0 10px;
+      color: var(--accent);
+      font-size: 1.15rem;
+    }
+    p, li { color: var(--muted); }
+    ul { padding-left: 1.25rem; }
+    a { color: var(--accent); }
+    .meta {
+      margin: 8px 0 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .links {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-
-    p {
-      margin-bottom: 18px;
-      color: #cbd5e1;
-    }
-
-    ul {
-      list-style-type: none;
-      margin-bottom: 20px;
-      padding-left: 4px;
-    }
-
-    li {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 12px;
-      color: #cbd5e1;
-    }
-
-    li::before {
-      content: '✦';
+    .language-switch {
       position: absolute;
-      left: 0;
-      color: var(--primary-light);
-      font-size: 0.8rem;
-      top: 1px;
+      right: clamp(16px, 4vw, 32px);
+      top: clamp(16px, 4vw, 28px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(7, 10, 19, 0.72);
+      box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.04);
     }
-
-    a {
-      color: var(--accent);
+    .links a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
       text-decoration: none;
-      transition: color 0.2s ease;
-      font-weight: 500;
+      color: var(--text);
     }
-
-    a:hover {
-      color: #67e8f9;
-      text-decoration: underline;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 40px;
-      font-size: 0.9rem;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-    }
-
-    .footer-links a:hover {
+    .links a:hover {
+      border-color: var(--accent);
       color: var(--accent);
     }
-
-    @media (max-width: 640px) {
-      body {
-        padding: 24px 16px;
-      }
-      .content-card {
-        padding: 24px;
-      }
-      .brand {
-        font-size: 1.8rem;
-      }
-      h1 {
-        font-size: 1.5rem;
-      }
+    .language-switch button {
+      border: 0;
+      background: transparent;
+      min-width: 42px;
+      padding: 5px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-align: center;
+      transition: background 160ms ease, color 160ms ease;
+      cursor: pointer;
+    }
+    .language-switch button:hover { color: var(--text); }
+    body[data-language="en"] .language-switch button:first-child,
+    body[data-language="vi"] .language-switch button:last-child {
+      background: rgba(125, 211, 252, 0.18);
+      color: var(--text);
+    }
+    .document {
+      display: none;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+    }
+    #english { display: block; }
+    body[data-language="vi"] #english { display: none; }
+    body[data-language="vi"] #vietnamese { display: block; }
+    body[data-language="en"] #english { display: block; }
+    body[data-language="en"] #vietnamese { display: none; }
+    .document + .document { margin-top: 44px; }
+    .links {
+      margin-top: 34px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
     }
   </style>
 </head>
-<body>
-
-  <header>
-    <div class="brand">Starship Escape</div>
-    <div class="subtitle">Legal Document</div>
-    
-    <div class="lang-switcher">
-      <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">English</button>
-      <button class="lang-btn" id="btn-vi" onclick="setLanguage('vi')">Tiếng Việt</button>
-    </div>
-  </header>
-
+<body data-language="en">
   <main>
-    <div class="content-card">
-      
-      <!-- ENGLISH VERSION -->
-      <div id="lang-en" class="lang-section active">
-        <h1>Terms of Service</h1>
-        <div class="last-updated">Last Updated: July 10, 2026</div>
-        
-        <p>Welcome to <strong>Starship Escape</strong>. These Terms of Service ("Terms") govern your use of the Starship Escape game application (the "Game"), developed and published by <strong>DangVT Studio</strong> ("we", "us", or "our").</p>
-        <p>By downloading, installing, or playing the Game, you agree to be bound by these Terms. If you do not agree to these terms, please do not use the Game.</p>
-        
-        <h2>1. License and Permitted Use</h2>
-        <p>We grant you a limited, non-exclusive, non-transferable, non-sublicensable, and revocable license to install and play the Game on your personal mobile or web devices for personal, non-commercial entertainment purposes, in compliance with these Terms.</p>
-        
-        <h2>2. Acceptable Use</h2>
-        <p>You agree to play the Game in a fair and lawful manner. You shall not:</p>
-        <ul>
-          <li>Exploit, manipulate, bypass, or reverse engineer any game mechanics, security systems, or software components.</li>
-          <li>Use external software or automation scripts to gain unfair advantages.</li>
-          <li>Design, export, or distribute custom levels that contain unlawful, offensive, harassing, copyright-infringing, or privacy-violating content.</li>
-        </ul>
+    <h1>Terms of Service</h1>
+    <p class="meta">Starship Escape - Last updated: July 16, 2026</p>
 
-        <h2>3. User Generated Content</h2>
-        <p>The Game includes interactive elements that allow players to build, export, and import custom levels ("User Content").</p>
-        <ul>
-          <li>You retain ownership of any custom levels you design. However, by creating and sharing User Content (including level codes), you grant us a worldwide, royalty-free, perpetual, and non-exclusive license to use, reproduce, modify, and display such content in connection with the Game.</li>
-          <li>You are solely responsible for your User Content. We reserve the right to review, block, or delete any custom levels or shared content that violate these Terms.</li>
-        </ul>
+    <nav class="language-switch" aria-label="Language">
+      <button type="button" data-language-button="en" aria-pressed="true">EN</button>
+      <button type="button" data-language-button="vi" aria-pressed="false">VI</button>
+    </nav>
 
-        <h2>4. Data and Storage Disclaimer</h2>
-        <p>Your progress, custom levels, configurations, and high scores are saved locally on your device (using <code>localStorage</code> or local WebView storage). This data is not stored or backed up on our servers.</p>
-        <ul>
-          <li>We are not responsible for any data loss, including the loss of game progress or custom levels, resulting from clearing your device storage, browser cache, app cache, resetting device settings, or uninstalling the Game.</li>
-        </ul>
+    <section id="english" class="document" lang="en">
+      <h2>English Version</h2>
+      <p>
+        These Terms apply when you access or play Starship Escape, including the web game, mobile builds,
+        account features, custom sectors, and community sector sharing features.
+      </p>
 
-        <h2>5. Disclaimers & Limitation of Liability</h2>
-        <ul>
-          <li>The Game is provided on an "AS IS" and "AS AVAILABLE" basis, without warranties of any kind, express or implied. We do not guarantee that the Game will run uninterrupted, error-free, or be compatible with all devices.</li>
-          <li>To the maximum extent permitted by law, DangVT Studio shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising out of your access to, use of, or inability to use the Game.</li>
-        </ul>
+      <h2>1. Use of the Game</h2>
+      <p>
+        Starship Escape is provided for personal entertainment. You may play the campaign, create custom sectors,
+        import sector codes, and use community features only in a lawful and respectful way.
+      </p>
 
-        <h2>6. Governing Law</h2>
-        <p>These Terms and any disputes arising out of or in connection with them shall be governed by and construed in accordance with the laws of Vietnam, without regard to its conflict of law principles.</p>
+      <h2>2. Accounts and Sign-In</h2>
+      <p>
+        Some features may use Firebase Authentication, including Google sign-in, email/password accounts, or optional
+        guest access. You are responsible for activity on your account and for keeping your sign-in method secure.
+        Display names must not impersonate another person, mislead players, or use reserved developer/admin names
+        unless you are authorized.
+      </p>
 
-        <h2>7. Changes to Terms</h2>
-        <p>We reserve the right to modify these Terms at any time. When we make updates, we will revise the "Last Updated" date at the top of this document. Continued use of the Game after updates are posted constitutes your acceptance of the revised Terms.</p>
+      <h2>3. Custom and Community Sectors</h2>
+      <p>
+        You may create and upload custom sector codes, names, descriptions, and related metadata to the community area.
+        Uploaded sectors may be visible to other players with your display name, upload time, size, reaction counts,
+        and download counts.
+      </p>
+      <ul>
+        <li>Do not upload illegal, hateful, abusive, sexual, misleading, spam, or malware-related content.</li>
+        <li>Do not upload content that violates another person's rights or includes private information.</li>
+        <li>Do not use automation or repeated uploads to disrupt the community area.</li>
+        <li>We may remove sectors, restrict accounts, or adjust community features to protect the service.</li>
+      </ul>
+      <p>
+        Campaign sectors are official game content and can only be updated by the developer. Community sectors are
+        player-submitted content and are not reviewed before publication during testing.
+      </p>
 
-        <h2>8. Contact Us</h2>
-        <p>If you have any questions or feedback regarding these Terms, please contact us at:</p>
-        <p>Email: <a href="mailto:dangvt.studio@gmail.com">dangvt.studio@gmail.com</a></p>
-      </div>
+      <h2>4. Purchases, Rewards, and Ads</h2>
+      <p>
+        The game may include in-game rewards, unlocks, ranking features, and ads such as Google AdMob. Virtual items
+        or progress have no real-world monetary value and may change as the game is updated.
+      </p>
 
-      <!-- VIETNAMESE VERSION -->
-      <div id="lang-vi" class="lang-section">
-        <h1>Điều khoản Dịch vụ</h1>
-        <div class="last-updated">Cập nhật lần cuối: 10/07/2026</div>
-        
-        <p>Chào mừng bạn đến với <strong>Starship Escape</strong>. Các Điều khoản Dịch vụ này ("Điều khoản") quy định việc sử dụng trò chơi Starship Escape ("Trò chơi"), được phát triển và phát hành bởi <strong>DangVT Studio</strong> ("chúng tôi").</p>
-        <p>Bằng việc tải xuống, cài đặt hoặc trải nghiệm Trò chơi, bạn đồng ý tuân thủ các Điều khoản này. Nếu bạn không đồng ý với các điều khoản này, vui lòng không sử dụng Trò chơi.</p>
-        
-        <h2>1. Giấy phép và Phạm vi Sử dụng</h2>
-        <p>Chúng tôi cấp cho bạn một giấy phép giới hạn, không độc quyền, không chuyển nhượng, không thể cấp phép lại và có thể thu hồi để cài đặt và chơi Trò chơi trên các thiết bị di động hoặc trình duyệt web cá nhân của bạn cho mục đích giải trí cá nhân, phi thương mại, phù hợp với các Điều khoản này.</p>
-        
-        <h2>2. Sử dụng Hợp lệ</h2>
-        <p>Bạn đồng ý trải nghiệm Trò chơi một cách lành mạnh và hợp pháp. Bạn cam kết không:</p>
-        <ul>
-          <li>Khai thác, thao túng, vượt qua hoặc tìm cách đảo ngược mã nguồn (reverse engineer) của bất kỳ cơ chế trò chơi, hệ thống bảo mật hoặc thành phần phần mềm nào.</li>
-          <li>Sử dụng phần mềm can thiệp bên ngoài hoặc các mã tự động hóa để tạo lợi thế không công bằng.</li>
-          <li>Thiết kế, xuất bản hoặc phát tán các màn chơi tự tạo có nội dung vi phạm pháp luật, xúc phạm, quấy rối, xâm phạm bản quyền hoặc quyền riêng tư của người khác.</li>
-        </ul>
+      <h2>5. Local and Cloud Data</h2>
+      <p>
+        Progress, settings, editor data, imported sectors, and other gameplay data may be stored locally on your device
+        or browser. Account profiles, community uploads, reactions, downloads, and related online features may be stored
+        in Firebase or other service providers used by the game.
+      </p>
 
-        <h2>3. Nội dung do Người dùng Tạo</h2>
-        <p>Trò chơi bao gồm các yếu tố tương tác cho phép người chơi xây dựng, xuất và nhập các màn chơi tùy chỉnh ("Nội dung Người dùng").</p>
-        <ul>
-          <li>Bạn giữ quyền sở hữu đối với bất kỳ màn chơi tùy chỉnh nào bạn thiết kế. Tuy nhiên, bằng việc tạo ra và chia sẻ Nội dung Người dùng (bao gồm mã màn chơi), bạn cấp cho chúng tôi quyền sử dụng, sao chép, sửa đổi và hiển thị các nội dung đó trên toàn cầu, miễn phí bản quyền và vô thời hạn để phục vụ cho hoạt động của Trò chơi.</li>
-          <li>Bạn chịu trách nhiệm hoàn toàn đối với Nội dung Người dùng của mình. Chúng tôi bảo lưu quyền xem xét, chặn hoặc xóa bỏ bất kỳ màn chơi tự tạo hay nội dung chia sẻ nào vi phạm các Điều khoản này.</li>
-        </ul>
+      <h2>6. Service Changes</h2>
+      <p>
+        Starship Escape is an active project. Features, sector formats, rules, balancing, online systems, and availability
+        may change over time. We may suspend or remove features when needed for security, maintenance, abuse prevention,
+        or platform requirements.
+      </p>
 
-        <h2>4. Tuyên bố từ chối trách nhiệm về Dữ liệu và Lưu trữ</h2>
-        <p>Tiến trình chơi, các màn chơi tự tạo, cấu hình cài đặt và điểm số của bạn được lưu trữ cục bộ trên thiết bị của bạn (sử dụng <code>localStorage</code> hoặc bộ nhớ cục bộ WebView). Dữ liệu này không được đồng bộ hoặc sao lưu trên máy chủ của chúng tôi.</p>
-        <ul>
-          <li>Chúng tôi không chịu trách nhiệm cho bất kỳ sự mất mát dữ liệu nào, bao gồm cả việc mất tiến trình chơi hoặc mất màn chơi tự tạo, do hành vi xóa dữ liệu thiết bị, xóa bộ nhớ đệm trình duyệt/ứng dụng, đặt lại thiết bị hoặc gỡ cài đặt Trò chơi.</li>
-        </ul>
+      <h2>7. No Warranty</h2>
+      <p>
+        The game is provided "as is" without warranties of any kind. We do not guarantee that the game will be available
+        without interruption, free of errors, or compatible with every device, browser, or network.
+      </p>
 
-        <h2>5. Từ chối Bảo đảm & Giới hạn Trách nhiệm</h2>
-        <ul>
-          <li>Trò chơi được cung cấp trên cơ sở "NHƯ HIỆN CÓ" và "SẴN CÓ" mà không có bất kỳ sự đảm bảo nào, dù là rõ ràng hay ngụ ý. Chúng tôi không đảm bảo rằng Trò chơi sẽ chạy liên tục, không có lỗi hoặc tương thích với mọi thiết bị.</li>
-          <li>Trong phạm vi tối đa được pháp luật cho phép, DangVT Studio sẽ không chịu trách nhiệm pháp lý đối với bất kỳ thiệt hại trực tiếp, gián tiếp, ngẫu nhiên, đặc biệt, hệ quả hoặc trừng phạt nào phát sinh từ việc bạn truy cập, sử dụng hoặc không thể sử dụng Trò chơi.</li>
-        </ul>
+      <h2>8. Limitation of Liability</h2>
+      <p>
+        To the maximum extent allowed by law, the developer is not liable for indirect, incidental, special, or
+        consequential damages, including loss of progress, loss of custom sectors, service interruption, or data loss.
+      </p>
 
-        <h2>6. Luật áp dụng</h2>
-        <p>Các Điều khoản này và mọi tranh chấp phát sinh từ hoặc liên quan đến chúng sẽ được điều chỉnh và giải thích theo luật pháp của Việt Nam, bất kể các nguyên tắc về xung đột pháp luật.</p>
+      <h2>9. Account Deletion</h2>
+      <p>
+        You can request deletion of your account and eligible cloud data using the account deletion page linked below.
+        Local data stored on your own device can be removed by clearing browser/app storage or uninstalling the app.
+        Custom sectors already downloaded by other players may remain on their devices.
+      </p>
 
-        <h2>7. Thay đổi Điều khoản</h2>
-        <p>Chúng tôi bảo lưu quyền sửa đổi các Điều khoản này bất kỳ lúc nào. Khi có cập nhật mới, chúng tôi sẽ thay đổi ngày "Cập nhật lần cuối" ở đầu văn bản này. Việc tiếp tục chơi Trò chơi sau khi có cập nhật biểu thị sự đồng ý của bạn với Điều khoản sửa đổi.</p>
+      <h2>10. Contact</h2>
+      <p>
+        For support, legal questions, or account deletion requests, contact:
+        <a href="mailto:dangvt.studio@gmail.com">dangvt.studio@gmail.com</a>.
+      </p>
+    </section>
 
-        <h2>8. Liên hệ với Chúng tôi</h2>
-        <p>Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào về Điều khoản Dịch vụ này, vui lòng liên hệ với chúng tôi qua:</p>
-        <p>Email: <a href="mailto:dangvt.studio@gmail.com">dangvt.studio@gmail.com</a></p>
-      </div>
+    <section id="vietnamese" class="document" lang="vi">
+      <h2>Phiên Bản Tiếng Việt</h2>
+      <p>
+        Điều khoản này áp dụng khi bạn truy cập hoặc chơi Starship Escape, bao gồm bản web, bản di động,
+        tính năng tài khoản, sector tùy chỉnh và tính năng chia sẻ sector cộng đồng.
+      </p>
 
-    </div>
+      <h2>1. Sử Dụng Trò Chơi</h2>
+      <p>
+        Starship Escape được cung cấp cho mục đích giải trí cá nhân. Bạn có thể chơi campaign, tạo sector tùy chỉnh,
+        nhập mã sector và dùng tính năng cộng đồng theo cách hợp pháp, tôn trọng người khác.
+      </p>
 
-    <div class="footer-links">
-      <a href="./privacy.html" id="link-privacy">Privacy Policy / Chính sách Quyền riêng tư</a>
+      <h2>2. Tài Khoản Và Đăng Nhập</h2>
+      <p>
+        Một số tính năng có thể dùng Firebase Authentication, bao gồm đăng nhập Google, email/mật khẩu hoặc guest nếu
+        tính năng này được bật. Bạn chịu trách nhiệm với hoạt động trên tài khoản của mình và cần bảo vệ phương thức
+        đăng nhập. Tên hiển thị không được mạo danh, gây hiểu nhầm hoặc dùng tên dành riêng cho nhà phát triển/admin
+        nếu chưa được cho phép.
+      </p>
+
+      <h2>3. Sector Tùy Chỉnh Và Cộng Đồng</h2>
+      <p>
+        Bạn có thể tạo và tải lên mã sector tùy chỉnh, tên, mô tả và dữ liệu liên quan vào khu vực cộng đồng. Sector
+        đã tải lên có thể hiển thị cho người chơi khác cùng tên hiển thị, thời gian tải lên, kích thước, số reaction
+        và số lượt tải.
+      </p>
+      <ul>
+        <li>Không tải lên nội dung bất hợp pháp, thù ghét, quấy rối, tình dục, gây hiểu nhầm, spam hoặc liên quan malware.</li>
+        <li>Không tải lên nội dung vi phạm quyền của người khác hoặc chứa thông tin riêng tư.</li>
+        <li>Không dùng tự động hóa hoặc tải lên lặp lại để phá hoại khu vực cộng đồng.</li>
+        <li>Chúng tôi có thể xóa sector, giới hạn tài khoản hoặc điều chỉnh tính năng cộng đồng để bảo vệ dịch vụ.</li>
+      </ul>
+      <p>
+        Sector campaign là nội dung chính thức và chỉ nhà phát triển có thể cập nhật. Sector cộng đồng là nội dung do
+        người chơi gửi lên và trong giai đoạn thử nghiệm có thể chưa được duyệt trước khi hiển thị.
+      </p>
+
+      <h2>4. Vật Phẩm, Phần Thưởng Và Quảng Cáo</h2>
+      <p>
+        Trò chơi có thể bao gồm phần thưởng, mở khóa, xếp hạng và quảng cáo như Google AdMob. Vật phẩm ảo hoặc tiến
+        trình chơi không có giá trị tiền thật và có thể thay đổi khi trò chơi được cập nhật.
+      </p>
+
+      <h2>5. Dữ Liệu Cục Bộ Và Dữ Liệu Đám Mây</h2>
+      <p>
+        Tiến trình, cài đặt, dữ liệu editor, sector đã nhập và dữ liệu chơi khác có thể được lưu cục bộ trên thiết bị
+        hoặc trình duyệt của bạn. Hồ sơ tài khoản, nội dung cộng đồng, reaction, lượt tải và các tính năng online liên
+        quan có thể được lưu trong Firebase hoặc nhà cung cấp dịch vụ khác mà trò chơi sử dụng.
+      </p>
+
+      <h2>6. Thay Đổi Dịch Vụ</h2>
+      <p>
+        Starship Escape là dự án đang phát triển. Tính năng, định dạng sector, luật chơi, cân bằng, hệ thống online và
+        khả năng truy cập có thể thay đổi theo thời gian. Chúng tôi có thể tạm dừng hoặc gỡ tính năng khi cần bảo trì,
+        bảo mật, chống lạm dụng hoặc đáp ứng yêu cầu nền tảng.
+      </p>
+
+      <h2>7. Không Bảo Đảm</h2>
+      <p>
+        Trò chơi được cung cấp theo hiện trạng. Chúng tôi không bảo đảm trò chơi luôn hoạt động liên tục, không có lỗi
+        hoặc tương thích với mọi thiết bị, trình duyệt hay mạng.
+      </p>
+
+      <h2>8. Giới Hạn Trách Nhiệm</h2>
+      <p>
+        Trong phạm vi pháp luật cho phép, nhà phát triển không chịu trách nhiệm với thiệt hại gián tiếp, phát sinh,
+        đặc biệt hoặc hệ quả, bao gồm mất tiến trình, mất sector tùy chỉnh, gián đoạn dịch vụ hoặc mất dữ liệu.
+      </p>
+
+      <h2>9. Xóa Tài Khoản</h2>
+      <p>
+        Bạn có thể yêu cầu xóa tài khoản và dữ liệu đám mây đủ điều kiện qua trang xóa tài khoản bên dưới. Dữ liệu cục
+        bộ trên thiết bị của bạn có thể được xóa bằng cách xóa dữ liệu trình duyệt/ứng dụng hoặc gỡ cài đặt ứng dụng.
+        Sector tùy chỉnh đã được người chơi khác tải về có thể vẫn còn trên thiết bị của họ.
+      </p>
+
+      <h2>10. Liên Hệ</h2>
+      <p>
+        Nếu cần hỗ trợ, hỏi về pháp lý hoặc yêu cầu xóa tài khoản, liên hệ:
+        <a href="mailto:dangvt.studio@gmail.com">dangvt.studio@gmail.com</a>.
+      </p>
+    </section>
+
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="delete-account.html">Delete Account</a>
+      <a href="../">Back to Game</a>
     </div>
   </main>
-
   <script>
-    function setLanguage(lang) {
-      // Update active button classes
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
+    (() => {
+      const buttons = document.querySelectorAll("[data-language-button]");
+      const setLanguage = (language) => {
+        document.body.dataset.language = language;
+        buttons.forEach((button) => {
+          button.setAttribute(
+            "aria-pressed",
+            button.dataset.languageButton === language ? "true" : "false",
+          );
+        });
+      };
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          setLanguage(button.dataset.languageButton || "en");
+        });
       });
-      document.getElementById('btn-' + lang).classList.add('active');
-
-      // Update visibility of language sections
-      document.querySelectorAll('.lang-section').forEach(sec => {
-        sec.classList.remove('active');
-      });
-      document.getElementById('lang-' + lang).classList.add('active');
-
-      // Save user language preference if localStorage is available
-      try {
-        localStorage.setItem('legal_lang_pref', lang);
-      } catch (e) {
-        // Silent catch for private browsing
-      }
-    }
-
-    // Set default language based on browser preference or saved preference
-    window.addEventListener('DOMContentLoaded', () => {
-      let defaultLang = 'en';
-      
-      try {
-        const savedPref = localStorage.getItem('legal_lang_pref');
-        if (savedPref === 'en' || savedPref === 'vi') {
-          defaultLang = savedPref;
-        } else {
-          const userLang = navigator.language || navigator.userLanguage;
-          if (userLang && userLang.toLowerCase().includes('vi')) {
-            defaultLang = 'vi';
-          }
-        }
-      } catch (e) {
-        // Fallback to default
-      }
-      
-      setLanguage(defaultLang);
-    });
+      setLanguage("en");
+    })();
   </script>
 </body>
 </html>

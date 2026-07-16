@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Account - Starship Escape</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070a13;
+      --panel: #101627;
+      --line: #27324d;
+      --text: #f3f7ff;
+      --muted: #9ba9c4;
+      --accent: #7dd3fc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(125, 211, 252, 0.08), transparent 32rem),
+        radial-gradient(circle at 85% 0%, rgba(129, 140, 248, 0.1), transparent 34rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      padding: 32px 16px;
+    }
+    main {
+      position: relative;
+      width: min(860px, 100%);
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(16, 22, 39, 0.86);
+      padding: clamp(24px, 5vw, 48px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    }
+    h1, h2 { line-height: 1.2; }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: 0.02em;
+    }
+    h2 {
+      margin: 32px 0 10px;
+      color: var(--accent);
+      font-size: 1.15rem;
+    }
+    p, li { color: var(--muted); }
+    ul { padding-left: 1.25rem; }
+    a { color: var(--accent); }
+    .meta {
+      margin: 8px 0 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .button {
+      display: inline-flex;
+      margin: 18px 0 8px;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      padding: 11px 18px;
+      color: var(--bg);
+      background: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .language-switch {
+      position: absolute;
+      right: clamp(16px, 4vw, 32px);
+      top: clamp(16px, 4vw, 28px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(7, 10, 19, 0.72);
+      box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.04);
+    }
+    .links a {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .language-switch button {
+      border: 0;
+      background: transparent;
+      min-width: 42px;
+      padding: 5px 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-align: center;
+      transition: background 160ms ease, color 160ms ease;
+      cursor: pointer;
+    }
+    .language-switch button:hover { color: var(--text); }
+    body[data-language="en"] .language-switch button:first-child,
+    body[data-language="vi"] .language-switch button:last-child {
+      background: rgba(125, 211, 252, 0.18);
+      color: var(--text);
+    }
+    .document {
+      display: none;
+      padding-top: 8px;
+      border-top: 1px solid var(--line);
+    }
+    #english { display: block; }
+    body[data-language="vi"] #english { display: none; }
+    body[data-language="vi"] #vietnamese { display: block; }
+    body[data-language="en"] #english { display: block; }
+    body[data-language="en"] #vietnamese { display: none; }
+    .document + .document { margin-top: 44px; }
+    .box {
+      margin: 18px 0;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(7, 10, 19, 0.46);
+      padding: 16px;
+    }
+    .links {
+      margin-top: 34px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+  </style>
+</head>
+<body data-language="en">
+  <main>
+    <h1>Delete Account</h1>
+    <p class="meta">Starship Escape - Last updated: July 16, 2026</p>
+
+    <nav class="language-switch" aria-label="Language">
+      <button type="button" data-language-button="en" aria-pressed="true">EN</button>
+      <button type="button" data-language-button="vi" aria-pressed="false">VI</button>
+    </nav>
+
+    <section id="english" class="document" lang="en">
+      <h2>English Version</h2>
+      <p>
+        You can request deletion of your Starship Escape account and eligible cloud data by email.
+        This page is provided for Google Play and public account deletion requirements.
+      </p>
+
+      <h2>How to Request Deletion</h2>
+      <ol>
+        <li>Email <a href="mailto:dangvt.studio@gmail.com">dangvt.studio@gmail.com</a>.</li>
+        <li>Use the subject: <strong>Starship Escape account deletion request</strong>.</li>
+        <li>Include your registered email address, display name, and UID if available.</li>
+        <li>We may ask you to confirm account ownership before processing the request.</li>
+      </ol>
+
+      <a class="button" href="mailto:dangvt.studio@gmail.com?subject=Starship%20Escape%20account%20deletion%20request&body=Registered%20email%3A%0ADisplay%20name%3A%0AUID%20(if%20available)%3A%0AReason%20(optional)%3A">
+        Send Deletion Request
+      </a>
+
+      <div class="box">
+        <h2>Data That May Be Deleted</h2>
+        <ul>
+          <li>Your Firebase Authentication account, when it can be matched to your request.</li>
+          <li>Your player profile and display name records.</li>
+          <li>Community sectors you uploaded, when identifiable as yours.</li>
+          <li>Account-linked reactions, downloads, and other cloud records where technically possible.</li>
+        </ul>
+      </div>
+
+      <h2>Data That May Remain</h2>
+      <p>
+        Local data on your own device or browser is controlled by you. Clear browser/app storage or uninstall the app to
+        remove it. Community sectors already downloaded by other players may remain on their devices because those copies
+        are stored locally outside our control. We may retain limited records when required for security, abuse prevention,
+        legal compliance, or request handling.
+      </p>
+
+      <h2>Processing Time</h2>
+      <p>
+        We will review and process valid deletion requests as soon as reasonably possible after confirming ownership.
+      </p>
+    </section>
+
+    <section id="vietnamese" class="document" lang="vi">
+      <h2>Phiên Bản Tiếng Việt</h2>
+      <p>
+        Bạn có thể yêu cầu xóa tài khoản Starship Escape và dữ liệu đám mây đủ điều kiện bằng email. Trang này được
+        cung cấp để đáp ứng yêu cầu công khai về xóa tài khoản của Google Play.
+      </p>
+
+      <h2>Cách Gửi Yêu Cầu Xóa</h2>
+      <ol>
+        <li>Gửi email đến <a href="mailto:dangvt.studio@gmail.com">dangvt.studio@gmail.com</a>.</li>
+        <li>Dùng tiêu đề: <strong>Starship Escape account deletion request</strong>.</li>
+        <li>Cung cấp email đăng ký, tên hiển thị và UID nếu có.</li>
+        <li>Chúng tôi có thể yêu cầu bạn xác nhận quyền sở hữu tài khoản trước khi xử lý.</li>
+      </ol>
+
+      <a class="button" href="mailto:dangvt.studio@gmail.com?subject=Starship%20Escape%20account%20deletion%20request&body=Registered%20email%3A%0ADisplay%20name%3A%0AUID%20(if%20available)%3A%0AReason%20(optional)%3A">
+        Gửi Yêu Cầu Xóa
+      </a>
+
+      <div class="box">
+        <h2>Dữ Liệu Có Thể Được Xóa</h2>
+        <ul>
+          <li>Tài khoản Firebase Authentication của bạn, khi có thể xác minh khớp với yêu cầu.</li>
+          <li>Hồ sơ người chơi và dữ liệu tên hiển thị.</li>
+          <li>Sector cộng đồng bạn đã tải lên, khi xác định được là của bạn.</li>
+          <li>Reaction, lượt tải và dữ liệu đám mây gắn với tài khoản khi có thể thực hiện về mặt kỹ thuật.</li>
+        </ul>
+      </div>
+
+      <h2>Dữ Liệu Có Thể Còn Lại</h2>
+      <p>
+        Dữ liệu cục bộ trên thiết bị hoặc trình duyệt do bạn kiểm soát. Bạn có thể xóa dữ liệu trình duyệt/ứng dụng
+        hoặc gỡ cài đặt ứng dụng để xóa dữ liệu này. Sector cộng đồng đã được người chơi khác tải về có thể vẫn còn
+        trên thiết bị của họ vì các bản sao đó nằm ngoài quyền kiểm soát của chúng tôi. Chúng tôi có thể giữ lại một
+        số bản ghi giới hạn khi cần cho bảo mật, chống lạm dụng, tuân thủ pháp lý hoặc xử lý yêu cầu.
+      </p>
+
+      <h2>Thời Gian Xử Lý</h2>
+      <p>
+        Chúng tôi sẽ xem xét và xử lý yêu cầu xóa hợp lệ sớm nhất có thể sau khi xác nhận quyền sở hữu tài khoản.
+      </p>
+    </section>
+
+    <div class="links">
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="../">Back to Game</a>
+    </div>
+  </main>
+  <script>
+    (() => {
+      const buttons = document.querySelectorAll("[data-language-button]");
+      const setLanguage = (language) => {
+        document.body.dataset.language = language;
+        buttons.forEach((button) => {
+          button.setAttribute(
+            "aria-pressed",
+            button.dataset.languageButton === language ? "true" : "false",
+          );
+        });
+      };
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          setLanguage(button.dataset.languageButton || "en");
+        });
+      });
+      setLanguage("en");
+    })();
+  </script>
+</body>
+</html>
