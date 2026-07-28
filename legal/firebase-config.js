@@ -1,0 +1,1 @@
+export default {"apiKey":"AIzaSyArdjKAGPys_DKoPuLN6RYE4LlysmEFdyk","authDomain":"starship-escape-v1.firebaseapp.com","projectId":"starship-escape-v1","storageBucket":"starship-escape-v1.firebasestorage.app","messagingSenderId":"569245053941","appId":"1:569245053941:web:5d2cceeee1f8209a9ba6bc","measurementId":"G-VWZTSBCT43"};
