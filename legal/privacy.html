@@ -62,13 +62,11 @@
       gap: 12px;
     }
     .language-switch {
-      position: absolute;
-      right: clamp(16px, 4vw, 32px);
-      top: clamp(16px, 4vw, 28px);
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0;
-      margin: 0;
+      width: max-content;
+      margin: 0 0 16px auto;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 999px;
@@ -114,6 +112,7 @@
     body[data-language="vi"] #vietnamese { display: block; }
     body[data-language="en"] #english { display: block; }
     body[data-language="en"] #vietnamese { display: none; }
+    body[data-embedded="true"] .language-switch { display: none; }
     .document + .document { margin-top: 44px; }
     .links {
       margin-top: 34px;
@@ -124,13 +123,13 @@
 </head>
 <body data-language="en">
   <main>
-    <h1>Privacy Policy</h1>
-    <p class="meta">Starship Escape - Last updated: July 16, 2026</p>
-
     <nav class="language-switch" aria-label="Language">
       <button type="button" data-language-button="en" aria-pressed="true">EN</button>
       <button type="button" data-language-button="vi" aria-pressed="false">VI</button>
     </nav>
+
+    <h1>Privacy Policy</h1>
+    <p class="meta">Starship Escape - Last updated: July 16, 2026</p>
 
     <section id="english" class="document" lang="en">
       <h2>English Version</h2>
@@ -327,7 +326,9 @@
           setLanguage(button.dataset.languageButton || "en");
         });
       });
-      setLanguage("en");
+      const params = new URLSearchParams(window.location.search);
+      document.body.dataset.embedded = params.get("embedded") === "1" ? "true" : "false";
+      setLanguage(params.get("lang") === "vi" ? "vi" : "en");
     })();
   </script>
 </body>
