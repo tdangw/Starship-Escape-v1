@@ -58,8 +58,8 @@
     }
     .links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      flex-wrap: nowrap;
+      gap: 8px;
     }
     .language-switch {
       display: grid;
@@ -76,7 +76,9 @@
     .links a {
       border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 8px 14px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      white-space: nowrap;
       text-decoration: none;
       color: var(--text);
     }
@@ -113,6 +115,7 @@
     body[data-language="en"] #english { display: block; }
     body[data-language="en"] #vietnamese { display: none; }
     body[data-embedded="true"] .language-switch { display: none; }
+    body[data-embedded="true"] .back-to-game { display: none; }
     .document + .document { margin-top: 44px; }
     .links {
       margin-top: 34px;
@@ -132,7 +135,6 @@
     <p class="meta">Starship Escape - Last updated: July 16, 2026</p>
 
     <section id="english" class="document" lang="en">
-      <h2>English Version</h2>
       <p>
         These Terms apply when you access or play Starship Escape, including the web game, mobile builds,
         account features, custom sectors, and community sector sharing features.
@@ -181,6 +183,11 @@
         or browser. Account profiles, community uploads, reactions, downloads, submitted feedback, and related online features may be stored
         in Firebase or other service providers used by the game.
       </p>
+      <p>
+        Progress backup and cross-device restoration are available only after you sign in to a non-guest account. Without
+        sign-in, progress remains local to the device or browser and may be lost when you uninstall the app, clear data,
+        reset the device, or move to another device. Offline-only data cannot be restored by the developer.
+      </p>
 
       <h2>6. Service Changes</h2>
       <p>
@@ -216,7 +223,9 @@
     </section>
 
     <section id="vietnamese" class="document" lang="vi">
-      <h2>Phiên Bản Tiếng Việt</h2>
+      <p>
+        <strong>Đồng bộ đám mây.</strong> Sao lưu tiến trình và khôi phục trên thiết bị khác chỉ khả dụng khi bạn đăng nhập bằng tài khoản không phải guest. Nếu không đăng nhập, dữ liệu chỉ lưu trên thiết bị hoặc trình duyệt và có thể mất khi gỡ ứng dụng, xóa dữ liệu, đặt lại hoặc đổi thiết bị. Nhà phát triển không thể khôi phục dữ liệu chỉ lưu ngoại tuyến.
+      </p>
       <p>
         Điều khoản này áp dụng khi bạn truy cập hoặc chơi Starship Escape, bao gồm bản web, bản di động,
         tính năng tài khoản, sector tùy chỉnh và tính năng chia sẻ sector cộng đồng.
@@ -302,7 +311,7 @@
     <div class="links">
       <a href="privacy.html">Privacy Policy</a>
       <a href="delete-account.html">Delete Account</a>
-      <a href="../">Back to Game</a>
+      <a class="back-to-game" href="../">Back to Game</a>
     </div>
   </main>
   <script>
@@ -324,6 +333,11 @@
       });
       const params = new URLSearchParams(window.location.search);
       document.body.dataset.embedded = params.get("embedded") === "1" ? "true" : "false";
+      if (document.body.dataset.embedded === "true") {
+        document.querySelectorAll('a[href="delete-account.html"]').forEach((link) => {
+          link.href = "delete-account.html?embedded=1";
+        });
+      }
       setLanguage(params.get("lang") === "vi" ? "vi" : "en");
     })();
   </script>

@@ -58,8 +58,8 @@
     }
     .links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      flex-wrap: nowrap;
+      gap: 8px;
     }
     .language-switch {
       display: grid;
@@ -76,7 +76,9 @@
     .links a {
       border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 8px 14px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      white-space: nowrap;
       text-decoration: none;
       color: var(--text);
     }
@@ -113,6 +115,7 @@
     body[data-language="en"] #english { display: block; }
     body[data-language="en"] #vietnamese { display: none; }
     body[data-embedded="true"] .language-switch { display: none; }
+    body[data-embedded="true"] .back-to-game { display: none; }
     .document + .document { margin-top: 44px; }
     .links {
       margin-top: 34px;
@@ -132,7 +135,6 @@
     <p class="meta">Starship Escape - Last updated: July 16, 2026</p>
 
     <section id="english" class="document" lang="en">
-      <h2>English Version</h2>
       <p>
         This Privacy Policy explains what information Starship Escape collects, how it is used, and how you can request
         deletion of your account and eligible cloud data.
@@ -218,7 +220,6 @@
     </section>
 
     <section id="vietnamese" class="document" lang="vi">
-      <h2>Phiên Bản Tiếng Việt</h2>
       <p>
         Chính sách quyền riêng tư này giải thích Starship Escape thu thập thông tin nào, sử dụng thông tin đó ra sao
         và cách bạn có thể yêu cầu xóa tài khoản cùng dữ liệu đám mây đủ điều kiện.
@@ -306,7 +307,7 @@
     <div class="links">
       <a href="terms.html">Terms of Service</a>
       <a href="delete-account.html">Delete Account</a>
-      <a href="../">Back to Game</a>
+      <a class="back-to-game" href="../">Back to Game</a>
     </div>
   </main>
   <script>
@@ -328,6 +329,11 @@
       });
       const params = new URLSearchParams(window.location.search);
       document.body.dataset.embedded = params.get("embedded") === "1" ? "true" : "false";
+      if (document.body.dataset.embedded === "true") {
+        document.querySelectorAll('a[href="delete-account.html"]').forEach((link) => {
+          link.href = "delete-account.html?embedded=1";
+        });
+      }
       setLanguage(params.get("lang") === "vi" ? "vi" : "en");
     })();
   </script>

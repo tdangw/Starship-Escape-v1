@@ -128,8 +128,8 @@
     .status.pending { display: block; color: var(--accent); background: #071b2a; }
     .links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      flex-wrap: nowrap;
+      gap: 8px;
       margin-top: 28px;
       padding-top: 20px;
       border-top: 1px solid var(--line);
@@ -137,16 +137,18 @@
     .links a {
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 8px 12px;
+      padding: 6px 10px;
       color: var(--text);
       text-decoration: none;
-      font-size: 0.86rem;
+      font-size: 0.8rem;
+      white-space: nowrap;
     }
     [data-lang="vi"] { display: none; }
     body[data-language="vi"] [data-lang="en"] { display: none; }
     body[data-language="vi"] [data-lang="vi"] { display: inline; }
     body[data-language="vi"] div[data-lang="vi"],
     body[data-language="vi"] p[data-lang="vi"] { display: block; }
+    body[data-embedded="true"] .back-to-game { display: none; }
     @media (max-width: 520px) {
       h1 { padding-right: 88px; }
       .language-switch { top: 14px; right: 14px; }
@@ -239,7 +241,7 @@
     <div class="links">
       <a href="terms.html">Terms of Service</a>
       <a href="privacy.html">Privacy Policy</a>
-      <a href="../">
+      <a class="back-to-game" href="../">
         <span data-lang="en">Back to Game</span>
         <span data-lang="vi">Về game</span>
       </a>
@@ -253,6 +255,8 @@
     import firebaseConfig from "./firebase-config.js";
 
     const languageButtons = document.querySelectorAll("[data-language-button]");
+    const params = new URLSearchParams(window.location.search);
+    document.body.dataset.embedded = params.get("embedded") === "1" ? "true" : "false";
     const setLanguage = (language) => {
       document.body.dataset.language = language;
       document.documentElement.lang = language;
