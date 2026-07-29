@@ -115,7 +115,7 @@
     body[data-language="en"] #english { display: block; }
     body[data-language="en"] #vietnamese { display: none; }
     body[data-embedded="true"] .language-switch { display: none; }
-    body[data-embedded="true"] .back-to-game { display: none; }
+    body[data-embedded="true"] .links a[href="delete-account.html"] { margin-left: auto; }
     .document + .document { margin-top: 44px; }
     .links {
       margin-top: 34px;
@@ -307,7 +307,6 @@
     <div class="links">
       <a href="terms.html">Terms of Service</a>
       <a href="delete-account.html">Delete Account</a>
-      <a class="back-to-game" href="../">Back to Game</a>
     </div>
   </main>
   <script>
@@ -315,11 +314,18 @@
       const buttons = document.querySelectorAll("[data-language-button]");
       const setLanguage = (language) => {
         document.body.dataset.language = language;
+        document.documentElement.lang = language;
         buttons.forEach((button) => {
           button.setAttribute(
             "aria-pressed",
             button.dataset.languageButton === language ? "true" : "false",
           );
+        });
+        document.querySelectorAll(".links a").forEach((link) => {
+          const target = new URL(link.href);
+          target.searchParams.set("lang", language);
+          if (params.get("embedded") === "1") target.searchParams.set("embedded", "1");
+          link.href = target.toString();
         });
       };
       buttons.forEach((button) => {
@@ -329,11 +335,6 @@
       });
       const params = new URLSearchParams(window.location.search);
       document.body.dataset.embedded = params.get("embedded") === "1" ? "true" : "false";
-      if (document.body.dataset.embedded === "true") {
-        document.querySelectorAll('a[href="delete-account.html"]').forEach((link) => {
-          link.href = "delete-account.html?embedded=1";
-        });
-      }
       setLanguage(params.get("lang") === "vi" ? "vi" : "en");
     })();
   </script>

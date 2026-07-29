@@ -43,28 +43,31 @@
     a { color: var(--accent); }
     .meta { margin: 6px 0 24px; font-size: 0.9rem; }
     .language-switch {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: max-content;
+      margin: 0 0 16px auto;
       overflow: hidden;
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: 999px;
+      background: rgba(7, 10, 19, 0.72);
+      box-shadow: inset 0 0 0 1px rgba(125, 211, 252, 0.04);
     }
     .language-switch button {
       min-width: 42px;
       border: 0;
-      padding: 7px 9px;
-      background: #070a13;
+      padding: 5px 10px;
+      background: transparent;
       color: var(--muted);
       cursor: pointer;
       font-weight: 700;
+      font-size: 0.78rem;
+      text-align: center;
+      transition: background 160ms ease, color 160ms ease;
     }
-    body[data-language="en"] [data-language-button="en"],
-    body[data-language="vi"] [data-language-button="vi"] {
-      background: #164e63;
-      color: white;
-    }
+    .language-switch button:hover { color: var(--text); }
+    body[data-language="en"] .language-switch button:first-child,
+    body[data-language="vi"] .language-switch button:last-child { background: rgba(125, 211, 252, 0.18); color: var(--text); }
     .notice {
       margin: 18px 0;
       border: 1px solid #7f1d1d;
@@ -148,25 +151,20 @@
     body[data-language="vi"] [data-lang="vi"] { display: inline; }
     body[data-language="vi"] div[data-lang="vi"],
     body[data-language="vi"] p[data-lang="vi"] { display: block; }
-    body[data-embedded="true"] .back-to-game { display: none; }
-    @media (max-width: 520px) {
-      h1 { padding-right: 88px; }
-      .language-switch { top: 14px; right: 14px; }
-    }
   </style>
 </head>
 <body data-language="en">
   <main>
+    <nav class="language-switch" aria-label="Language">
+      <button type="button" data-language-button="en" aria-pressed="true">EN</button>
+      <button type="button" data-language-button="vi" aria-pressed="false">VI</button>
+    </nav>
+
     <h1>
       <span data-lang="en">Delete Account</span>
       <span data-lang="vi">Xóa tài khoản</span>
     </h1>
     <p class="meta">Starship Escape - Last updated: July 21, 2026</p>
-
-    <nav class="language-switch" aria-label="Language">
-      <button type="button" data-language-button="en" aria-pressed="true">EN</button>
-      <button type="button" data-language-button="vi" aria-pressed="false">VI</button>
-    </nav>
 
     <div data-lang="en">
       <h2>Delete immediately inside the game</h2>
@@ -241,32 +239,39 @@
     <div class="links">
       <a href="terms.html">Terms of Service</a>
       <a href="privacy.html">Privacy Policy</a>
-      <a class="back-to-game" href="../">
-        <span data-lang="en">Back to Game</span>
-        <span data-lang="vi">Về game</span>
-      </a>
     </div>
   </main>
+
+  <script>
+    (() => {
+      const languageButtons = document.querySelectorAll("[data-language-button]");
+      const params = new URLSearchParams(window.location.search);
+      document.body.dataset.embedded = params.get("embedded") === "1" ? "true" : "false";
+      const setLanguage = (language) => {
+        document.body.dataset.language = language;
+        document.documentElement.lang = language;
+        languageButtons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.languageButton === language));
+        });
+        document.querySelectorAll(".links a").forEach((link) => {
+          const target = new URL(link.href);
+          target.searchParams.set("lang", language);
+          if (params.get("embedded") === "1") target.searchParams.set("embedded", "1");
+          link.href = target.toString();
+        });
+      };
+      languageButtons.forEach((button) => {
+        button.addEventListener("click", () => setLanguage(button.dataset.languageButton || "en"));
+      });
+      setLanguage(params.get("lang") === "vi" ? "vi" : "en");
+    })();
+  </script>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
     import { getFirestore, doc, serverTimestamp, setDoc } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
     import { inMemoryPersistence, initializeAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
     import firebaseConfig from "./firebase-config.js";
-
-    const languageButtons = document.querySelectorAll("[data-language-button]");
-    const params = new URLSearchParams(window.location.search);
-    document.body.dataset.embedded = params.get("embedded") === "1" ? "true" : "false";
-    const setLanguage = (language) => {
-      document.body.dataset.language = language;
-      document.documentElement.lang = language;
-      languageButtons.forEach((button) => {
-        button.setAttribute("aria-pressed", String(button.dataset.languageButton === language));
-      });
-    };
-    languageButtons.forEach((button) => {
-      button.addEventListener("click", () => setLanguage(button.dataset.languageButton || "en"));
-    });
 
     const form = document.getElementById("deletion-form");
     const submitButton = document.getElementById("submit-button");
@@ -319,8 +324,6 @@
         submitButton.disabled = false;
       }
     });
-
-    setLanguage("en");
   </script>
 </body>
 </html>
